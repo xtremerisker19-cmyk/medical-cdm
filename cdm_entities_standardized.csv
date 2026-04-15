@@ -1,0 +1,44 @@
+Entity_type,name,Parent Dim,Lineage
+Parent Dim,dim_geography_brick,,
+Parent Dim,dim_geography_region,,
+Parent Dim,dim_geography_zone,,
+Parent Dim,dim_geography_station,,
+Parent Dim,dim_customer,,
+Parent Dim,dim_employee,,
+Parent Dim,dim_doctor,,
+Parent Dim,dim_distributor,,
+Parent Dim,dim_company,,
+Parent Dim,dim_business_unit,,
+Parent Dim,dim_designation,,
+Parent Dim,dim_team,,
+Parent Dim,dim_product,,
+Parent Dim,dim_material,,
+Parent Dim,dim_sales_type,,
+Parent Dim,dim_campaign,,
+Parent Dim,dim_pharmacy,,
+Parent Dim,dim_planning,,
+Parent Dim,dim_sales,,
+Parent Dim,dim_call,,
+Parent Dim,dim_visit,,
+Child Dim,dim_employee_am,dim_employee,
+Child Dim,dim_employee_nsm,dim_employee,
+Child Dim,dim_employee_rsm,dim_employee,
+Child Dim,dim_employee_dsm,dim_employee,
+Child Dim,dim_employee_tso,dim_employee,
+Child Dim,dim_product_category,dim_product,
+Child Dim,dim_product_trade_product,dim_product,
+Bridge Table,bridge_employee_org_hierarchy,,"dim_employee,dim_business_unit,dim_company,dim_designation"
+Bridge Table,bridge_employee_team,,"dim_employee,dim_designation"
+Bridge Table,bridge_product_material,,"dim_product_category,dim_material"
+Bridge Table,bridge_visit_coverage,,"dim_visit,dim_employee,dim_geography_zone,dim_geography_brick,dim_geography_region,dim_geography_station"
+Bridge Table,bridge_employee_call,,"dim_employee,dim_call"
+Bridge Table,bridge_employee_campaign,,"dim_employee,dim_campaign"
+Bridge Table,bridge_employee_planning,,"dim_employee,dim_planning"
+Facts,fct_price,,"dim_product,dim_material"
+Facts,fct_stock,,"dim_product,dim_geography_region"
+Facts,fct_trade,,dim_product
+Facts,fct_sales,,"dim_product,dim_employee,dim_sales_type"
+Facts,fct_dispatch,,"dim_product,dim_sales"
+Facts,fct_share,,"dim_sales,dim_employee"
+Facts,fct_target,,dim_employee
+Facts,fct_field_activity,,"dim_employee,dim_geography_brick"
